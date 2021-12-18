@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Book
 {
+    //书籍唯一标识id
+    private int bookid;
     //书名
     private String bookname;
     //爬该书籍的地址
@@ -16,6 +18,11 @@ public class Book
     private ArrayList<Episode> bookepisode = null;
 
 
+
+    public void setid(int bookid)
+    {
+        this.bookid = bookid;
+    }
 
     public void setbookname(String bookname)
     {
@@ -36,6 +43,11 @@ public class Book
     {
         this.bookepisode = bookepisode;
         episodenumber = bookepisode.size();
+    }
+
+    public int getbookid()
+    {
+        return bookid;
     }
 
     public String getbookname()

@@ -57,6 +57,7 @@ public class SearchResult extends HttpServlet
                 e.printStackTrace();
             }
 
+            /*
             //后端返回小说每章
             Episode epresp = book.getbookepisode().get(0);
             pw.println( "<div style='text-align:center;" +
@@ -65,6 +66,7 @@ public class SearchResult extends HttpServlet
                     "</div> </br><div style='text-align:center;" +
                     "        font-family: Times New Roman, Times, serif;font-size: 25px'>"
                     +epresp.getepisodecontent()+"</div>");
+             */
         }
         else
         {

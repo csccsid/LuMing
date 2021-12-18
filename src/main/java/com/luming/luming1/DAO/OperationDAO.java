@@ -13,6 +13,8 @@ public class OperationDAO implements DAO
 {
     private Book book = null;
 
+
+    //向待收录列表中添加
     @Override
     public void add(Book book, SqlConpool scp)
     {
