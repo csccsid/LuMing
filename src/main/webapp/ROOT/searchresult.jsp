@@ -28,14 +28,12 @@
 
 <body>
     <div class="b">
-        <%ArrayList<Episode> content = book.getbookepisode();
-          int i=0;
-        %>
-        <%while (!content.isEmpty()) {%>
+        <%ArrayList<Episode> content = book.getbookepisode();%>
+        <%for(int i=0;i<=content.size()-1;i++) {%>
         <dl>
-            <dd><a><%content.get(i).getepisodetitle();%></a></dd>
+            <dd><a><%=content.get(i).getepisodetitle()%></a></dd>
         </dl>
-        <%i++;}%>
+        <%}%>
     </div>
 </body>
 <%@include file="/ROOT/footer.jsp" %>

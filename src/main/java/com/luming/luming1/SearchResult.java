@@ -51,7 +51,7 @@ public class SearchResult extends HttpServlet
             try
             {
                 request.setAttribute("book", book);
-                request.getRequestDispatcher("/ROOT/searchresult.jsp").forward(request, response);
+                request.getRequestDispatcher("ROOT/searchresult.jsp").forward(request, response);
             } catch (ServletException e)
             {
                 e.printStackTrace();
