@@ -12,6 +12,8 @@ public class Book
     private String link;
     //书籍作者
     private String author;
+    //书籍简介
+    private String bookabstract;
     //总章节数
     private int episodenumber;
     //书籍的内容，按章节分
@@ -39,6 +41,11 @@ public class Book
         this.author = author;
     }
 
+    public void setBookabstract(String bookabstract)
+    {
+        this.bookabstract = bookabstract;
+    }
+
     public void setbookepisode(ArrayList<Episode> bookepisode)
     {
         this.bookepisode = bookepisode;
@@ -58,6 +65,11 @@ public class Book
     public String getlink()
     {
         return link;
+    }
+
+    public String getBookabstract()
+    {
+        return bookabstract;
     }
 
     public String getauthor()

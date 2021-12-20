@@ -12,8 +12,8 @@ create table booklist
     bookname varchar(20) not null,
     link  varchar(45) not null,
     author varchar(20) not null,
+    abstract varchar(45),
     episodenumber int not null
-
 )Engine=InnoDB default charset utf8;
 
 

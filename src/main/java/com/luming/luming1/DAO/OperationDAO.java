@@ -113,6 +113,7 @@ public class OperationDAO implements DAO
 
             if(resultSet.next())
             {
+
                 //因为已经验证过了有这个表，所以可以用普通statement和字符串拼接的sql了
                 String sql2 = "SELECT count(*) FROM " + book.getbookname();
                 state = conn.createStatement();
