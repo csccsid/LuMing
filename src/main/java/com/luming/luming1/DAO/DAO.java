@@ -16,14 +16,17 @@ public interface DAO
 
     //查询table，选择int来判断是为了能多提供信息，即有book多少章节，从而初始化ArrayList的时候分配空间
     //减少时间花销。当返回小于0时则为不存在。
-    public int gettable(Book book, SqlConpool scp);
+    public int getTable(Book book, SqlConpool scp);
 
     //查询noincludelist，避免重复添加
-    public boolean getnoinclude(Book book, SqlConpool scp);
+    public boolean getNotInclude(Book book, SqlConpool scp);
 
-    //分页查询
-    public Book getcontent(Book book, SqlConpool scp, int epnumber);
+    //模糊查询书籍，返回多个结果
+    public ArrayList<Book> getBook(String bookname, SqlConpool scp);
+
+    //精准查询书籍内容
+    public Book getbyId(Book book, SqlConpool scp, int epnumber);
 
     //分页查询所有书籍
-    public ArrayList<Book> getall(SqlConpool scp);
+    public ArrayList<Book> getAll(SqlConpool scp);
 }

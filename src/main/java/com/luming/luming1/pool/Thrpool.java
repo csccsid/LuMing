@@ -2,7 +2,7 @@ package com.luming.luming1.pool;
 
 import java.util.ArrayList;
 
-//线程池
+//自写简易线程池，没用上
 public class Thrpool
 {
     ArrayList<Runnable> tasks = new ArrayList<>();

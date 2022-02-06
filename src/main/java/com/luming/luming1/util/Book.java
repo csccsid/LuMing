@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Book
 {
     //书籍唯一标识id
-    private int bookid;
+    private String bookid;
     //书名
     private String bookname;
     //爬该书籍的地址
@@ -13,15 +13,15 @@ public class Book
     //书籍作者
     private String author;
     //书籍简介
-    private String bookabstract;
+    private String BookAbstract;
     //总章节数
-    private int episodenumber;
+    private int EpisodeNumber;
     //书籍的内容，按章节分
     private ArrayList<Episode> bookepisode = null;
 
 
 
-    public void setid(int bookid)
+    public void setId(String bookid)
     {
         this.bookid = bookid;
     }
@@ -41,18 +41,26 @@ public class Book
         this.author = author;
     }
 
-    public void setBookabstract(String bookabstract)
+    public void setBookAbstract(String BookAbstract)
     {
-        this.bookabstract = bookabstract;
+        this.BookAbstract = BookAbstract;
     }
 
     public void setbookepisode(ArrayList<Episode> bookepisode)
     {
         this.bookepisode = bookepisode;
-        episodenumber = bookepisode.size();
+        EpisodeNumber = bookepisode.size();
     }
 
-    public int getbookid()
+    public void setBookEpisodeNumber(int EpisodeNumber)
+    {
+        this.EpisodeNumber = EpisodeNumber;
+    }
+
+
+
+
+    public String getbookid()
     {
         return bookid;
     }
@@ -67,9 +75,9 @@ public class Book
         return link;
     }
 
-    public String getBookabstract()
+    public String getBookAbstract()
     {
-        return bookabstract;
+        return BookAbstract;
     }
 
     public String getauthor()
@@ -79,7 +87,7 @@ public class Book
 
     public int getEpisodenumber()
     {
-        return episodenumber;
+        return EpisodeNumber;
     }
 
     public ArrayList<Episode> getbookepisode()

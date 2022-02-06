@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.security.spec.ECParameterSpec;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -39,19 +40,37 @@ public class SearchResult extends HttpServlet
         //查询书
         Connection consearch = scp.getconnection();
         OperationDAO operation = new OperationDAO();
+        ArrayList<Book> bookLiet = new ArrayList<Book>();
+        bookLiet = operation.getBook(bookname, scp);
+        if(bookLiet != null)
+        {
+            response.setContentType("text/html; charset=UTF-8");
+
+            try
+            {
+                request.setAttribute("bookList", bookLiet);
+                request.getRequestDispatcher("ROOT/returnBookList.jsp").forward(request, response);
+            } catch (ServletException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+
+
         //获取书章节数
-        int epnumber = operation.gettable(book, scp);
+        int epnumber = operation.getTable(book, scp);
         //判断数据库中是否有该书
         if(operation.get(book, scp) && epnumber >= 0)
         {
-            book = operation.getcontent(book, scp, epnumber);
+            book = operation.getbyId(book, scp, epnumber);
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter pw = response.getWriter();
 
             try
             {
                 request.setAttribute("book", book);
-                request.getRequestDispatcher("ROOT/searchresult.jsp").forward(request, response);
+                request.getRequestDispatcher("ROOT/returnBookList.jsp").forward(request, response);
             } catch (ServletException e)
             {
                 e.printStackTrace();
@@ -71,7 +90,7 @@ public class SearchResult extends HttpServlet
         else
         {
             //如果待收录列表里有，就避免重复添加
-            if(operation.getnoinclude(book, scp) == false)
+            if(operation.getNotInclude(book, scp) == false)
                 operation.add(book, scp);
             PrintWriter pw = response.getWriter();
             pw.println("<div style='color:red'>nothing yet</div>");

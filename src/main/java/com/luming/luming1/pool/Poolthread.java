@@ -2,7 +2,7 @@ package com.luming.luming1.pool;
 
 import java.util.ArrayList;
 
-//线程池的线程
+//自写线程池的线程，也没用上
 public class Poolthread extends Thread
 {
     ArrayList<Runnable> tasks = null;
