@@ -16,7 +16,7 @@
         background-size: cover;
         background-color: rgba(123, 104, 238, 1);
     }
-    .b{ background:white;width:650px;height:240px;
+    .b{ width:650px;height:240px;
         text-align:center;margin:0 auto;padding:5px; background: rgba(255, 255, 255, 0.4);}
     .t{  font-size: 400%; text-align:center; color: #2F4F4F;
         font-family: "Times New Roman", Times, serif;}

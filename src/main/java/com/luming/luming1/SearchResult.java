@@ -58,6 +58,7 @@ public class SearchResult extends HttpServlet
 
 
 
+        /*
         //获取书章节数
         int epnumber = operation.getTable(book, scp);
         //判断数据库中是否有该书
@@ -85,7 +86,7 @@ public class SearchResult extends HttpServlet
                     "</div> </br><div style='text-align:center;" +
                     "        font-family: Times New Roman, Times, serif;font-size: 25px'>"
                     +epresp.getepisodecontent()+"</div>");
-             */
+
         }
         else
         {
@@ -95,6 +96,7 @@ public class SearchResult extends HttpServlet
             PrintWriter pw = response.getWriter();
             pw.println("<div style='color:red'>nothing yet</div>");
         }
+        */
 
 
     }
