@@ -220,7 +220,7 @@ public class OperationDAO implements DAO
             conn = scp.getconnection();
             String sql = "SELECT * FROM booklist WHERE bookname LIKE ?";
             prestate = conn.prepareStatement(sql);
-            prestate.setString(1, bookname);
+            prestate.setString(1, "%"+bookname+"%");
             ResultSet resultSet = null;
             resultSet = prestate.executeQuery();
 

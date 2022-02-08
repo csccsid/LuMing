@@ -13,26 +13,29 @@
 <style>
     .back
     {
-        width:1000px;height:100%;
-        text-align:center;margin:0 auto;padding:5px; background: rgba(255, 250, 205, 0.8);
+        width:950px; height:100%;
+        margin: 90px auto; padding:20px; background: rgba(255, 250, 205, 0.8);
     }
-    .name
-    a {
-        font-size: 150%; font-family: SimSun; color: black;
+    .name a
+    {
+        text-decoration: none; font-size: 150%; font-family: SimSun; color: black;
     }
+    a:hover {color: red;}
     .author
     {
-        font-size: 50%; font-family: KaiTi; color: dimgrey;
+        font-size: 70%; font-family: KaiTi; color: dimgrey;
     }
     .abstract
     {
-        font-size: 80%; font-family: SimSun
+        font-size: 90%; font-family: SimSun
     }
 </style>
 
+<%@include file="/ROOT/head.jsp" %>
+
 <body>
 <div class="back">
-    <ul>
+    <ul style = "list-style:none;padding:0; margin:0;">
         <%Book bookTemp;%>
         <%for(int i=0;i<=bookList.size()-1;i++) {%>
             <%bookTemp = bookList.get(i);%>
@@ -40,12 +43,13 @@
         <p class="name"><a href="/<%=bookTemp.getbookname()%>/">
             <%=bookTemp.getbookname()%></a></p>
         <p class="author">Author: <%=bookTemp.getauthor()%></p>
-        <p class="abstract"><%=bookTemp.getBookAbstract()%></p>
+        <p class="abstract">Abstract: <%=bookTemp.getBookAbstract()%></p>
     </li>
+        <hr style="border:1px dotted #000" />
         <%}%>
     </ul>
 </div>
 </body>
-<%@include file="/ROOT/head.jsp" %>
+
 <%@include file="/ROOT/footer.jsp" %>
 </html>
