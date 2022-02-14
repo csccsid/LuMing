@@ -1,7 +1,9 @@
 package com.luming.luming1.util;
 
+import java.io.Serializable;
+
 //章节的实体类
-public class Episode
+public class Episode implements Serializable//为了能序列化，一定要实现Serializable接口
 {
     //爬该章节的网址
     private String link = null;

@@ -38,14 +38,11 @@ public class SearchResult extends HttpServlet
         scp = (SqlConpool) getServletContext().getAttribute("dataconpool");
 
         //查询书
-        Connection consearch = scp.getconnection();
         OperationDAO operation = new OperationDAO();
         ArrayList<Book> bookLiet = new ArrayList<Book>();
-        bookLiet = operation.getBook(bookname, scp);
+        bookLiet = operation.getBookList(bookname, scp);
         if(bookLiet != null)
         {
-            response.setContentType("text/html; charset=UTF-8");
-
             try
             {
                 request.setAttribute("bookList", bookLiet);

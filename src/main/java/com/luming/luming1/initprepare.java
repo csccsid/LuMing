@@ -5,6 +5,8 @@ import com.mysql.jdbc.AbandonedConnectionCleanupThread;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import redis.clients.jedis.JedisPool;
 
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -22,6 +24,17 @@ public class initprepare implements ServletContextListener
         SqlConpool sqp = new SqlConpool(20);
         sct.setAttribute("dataconpool", sqp);
         System.out.println("初始化全局数据库连接池");
+
+        //创建全局redis连接池
+        //配置连接池
+        GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
+        poolConfig.setMaxIdle(20);
+        poolConfig.setMaxTotal(20);
+        poolConfig.setMaxWaitMillis(3000);
+        //启动连接池
+        JedisPool jpool = new JedisPool(poolConfig,"localhost");
+        sct.setAttribute("jedispool", jpool);
+        System.out.println("初始化全局redis连接池");
     }
 
     //在整个web应用销毁之前调用

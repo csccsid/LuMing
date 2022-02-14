@@ -107,7 +107,8 @@ public class OperationDAO implements DAO
             conn = scp.getconnection();
             String sql = "SELECT * FROM information_schema.TABLES WHERE TABLE_NAME = ?";
             prestate = conn.prepareStatement(sql);
-            prestate.setString(1, book.getbookname());
+            //书籍表的名称为id
+            prestate.setString(1, book.getbookid());
             ResultSet resultSet = null;
             resultSet = prestate.executeQuery();
 
@@ -115,7 +116,7 @@ public class OperationDAO implements DAO
             {
 
                 //因为已经验证过了有这个表，所以可以用普通statement和字符串拼接的sql了
-                String sql2 = "SELECT count(*) FROM " + book.getbookname();
+                String sql2 = "SELECT count(*) FROM `" + book.getbookid() + "`";
                 state = conn.createStatement();
                 resultSet = state.executeQuery(sql2);
                 if(resultSet.next())
@@ -206,8 +207,9 @@ public class OperationDAO implements DAO
         return false;
     }
 
+    //根据搜索内容模糊查询列表中书籍
     @Override
-    public ArrayList<Book> getBook(String bookname, SqlConpool scp)
+    public ArrayList<Book> getBookList(String bookname, SqlConpool scp)
     {
         Connection conn = null;
         PreparedStatement prestate = null;
@@ -271,18 +273,29 @@ public class OperationDAO implements DAO
         ArrayList<Episode> content  = new ArrayList<>(epnumber);
         try
         {
-            //确定书名合法，所以不用预编译sql
+            //确定书籍名字
             conn = scp.getconnection();
-            String sql = "SELECT * FROM " + book.getbookname();
+            String sql = "SELECT bookname FROM booklist WHERE bookid = '" + book.getbookid() + "'";
             state = conn.createStatement();
             ResultSet resultSet = null;
             resultSet = state.executeQuery(sql);
+            if(resultSet.next())
+            {
+                book.setbookname(resultSet.getString("bookname"));
+                System.out.println(book.getbookname());
+            }
 
-            while(resultSet.next())
+            //确定书id合法，所以不用预编译sql
+            String sql2 = "SELECT  `title`, `content` FROM `b1`";
+            state = conn.createStatement();
+            ResultSet resultSet2 = null;
+            resultSet2 = state.executeQuery(sql2);
+
+            while(resultSet2.next())
             {
                 Episode episodetemp = new Episode();
-                episodetemp.setepisodetitle(resultSet.getString("title"));
-                episodetemp.setepisodecontent(resultSet.getString("content"));
+                episodetemp.setepisodetitle(resultSet2.getString(1));
+                episodetemp.setepisodecontent(resultSet2.getString(2));
                 content.add(episodetemp);
             }
             book.setbookepisode(content);

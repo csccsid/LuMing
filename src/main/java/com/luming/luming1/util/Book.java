@@ -1,8 +1,9 @@
 package com.luming.luming1.util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Book
+public class Book implements Serializable//为了能序列化，一定要实现Serializable接口
 {
     //书籍唯一标识id
     private String bookid;

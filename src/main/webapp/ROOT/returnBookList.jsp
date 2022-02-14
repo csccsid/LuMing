@@ -29,6 +29,10 @@
     {
         font-size: 90%; font-family: SimSun
     }
+    .include
+    {
+        text-align:center; margin:0 auto; font-size: 90%; font-family: Arial; color: black;
+    }
 </style>
 
 <%@include file="/ROOT/head.jsp" %>
@@ -40,7 +44,7 @@
         <%for(int i=0;i<=bookList.size()-1;i++) {%>
             <%bookTemp = bookList.get(i);%>
     <li>
-        <p class="name"><a href="/<%=bookTemp.getbookname()%>/">
+        <p class="name"><a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookTemp.getbookid()%>">
             <%=bookTemp.getbookname()%></a></p>
         <p class="author">Author: <%=bookTemp.getauthor()%></p>
         <p class="abstract">Abstract: <%=bookTemp.getBookAbstract()%></p>
@@ -48,6 +52,11 @@
         <hr style="border:1px dotted #000" />
         <%}%>
     </ul>
+
+    <br><br><br><br><br>
+    <p class = "include">If you do not find the one you want, pleas click
+        <a href="http://localhost:8080/LuMing/including?bookname=<%=request.getParameter("bookname")%>">here</a>
+        to inform us. And we are going to update the library as soon as possible.</p>
 </div>
 </body>
 
