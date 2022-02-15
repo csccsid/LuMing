@@ -3,7 +3,7 @@
 <%@ page import="com.luming.luming1.util.Book" %>
 <%@ page import="static com.luming.luming1.util.SerializeUtil.serialize" %>
 <%@ page import="com.luming.luming1.pool.SqlConpool" %>
-<%@ page import="com.luming.luming1.DAO.OperationDAO" %>
+<%@ page import="com.luming.luming1.DAOModel.OperationDAO" %>
 <%@ page import="static com.luming.luming1.util.SerializeUtil.unserialize" %>
 
 <%--返回展示精确查找到的章节情况--%>
@@ -53,5 +53,5 @@
 <body>
 
 </body>
-<%@include file="/ROOT/footer.jsp" %>
+<%@include file="/ROOT/view/footer.jsp" %>
 </html>

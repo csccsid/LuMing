@@ -1,10 +1,8 @@
 package com.luming.luming1.controller;
 
-import com.luming.luming1.DAO.OperationDAO;
+import com.luming.luming1.DAOModel.OperationDAO;
 import com.luming.luming1.pool.SqlConpool;
 import com.luming.luming1.util.Book;
-import com.luming.luming1.util.Episode;
-import com.mysql.jdbc.EscapeTokenizer;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,12 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
-import java.security.spec.ECParameterSpec;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 @WebServlet(name = "search", value = "/searchresult")
@@ -46,7 +38,7 @@ public class SearchResult extends HttpServlet
             try
             {
                 request.setAttribute("bookList", bookLiet);
-                request.getRequestDispatcher("ROOT/returnBookList.jsp").forward(request, response);
+                request.getRequestDispatcher("ROOT/view/returnBookList.jsp").forward(request, response);
             } catch (ServletException e)
             {
                 e.printStackTrace();

@@ -1,8 +1,6 @@
 package com.luming.luming1.controller;
 
 
-import com.luming.luming1.DAO.OperationDAO;
-import com.luming.luming1.controller.redisUpdate;
 import com.luming.luming1.pool.SqlConpool;
 import com.luming.luming1.util.Book;
 import com.luming.luming1.util.Episode;
@@ -77,10 +75,10 @@ public class contentReturn extends HttpServlet
 
             //转向
             request.setAttribute("book", book);
-            request.getRequestDispatcher("ROOT/returnBook.jsp?bookid="+bookid).forward(request, response);
+            request.getRequestDispatcher("ROOT/view/returnBook.jsp?bookid="+bookid).forward(request, response);
         } else
         {
-            request.getRequestDispatcher("ROOT/returnEpisode.jsp?bookid="+bookid+"&episode="+episode)
+            request.getRequestDispatcher("ROOT/view/returnEpisode.jsp?bookid="+bookid+"&episode="+episode)
                     .forward(request, response);
         }
     }

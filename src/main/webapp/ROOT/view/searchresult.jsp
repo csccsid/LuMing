@@ -36,5 +36,5 @@
         <%}%>
     </div>
 </body>
-<%@include file="/ROOT/footer.jsp" %>
+<%@include file="/ROOT/view/footer.jsp" %>
 </html>

@@ -1,4 +1,4 @@
-package com.luming.luming1.DAO;
+package com.luming.luming1.DAOModel;
 
 import com.luming.luming1.pool.SqlConpool;
 import com.luming.luming1.util.Book;

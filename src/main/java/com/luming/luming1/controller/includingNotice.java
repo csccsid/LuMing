@@ -16,7 +16,7 @@ public class includingNotice extends HttpServlet
         String bookname = request.getParameter("bookname");
         try
         {
-            request.getRequestDispatcher("ROOT/includeNotice.jsp?bookname="+bookname).forward(request, response);
+            request.getRequestDispatcher("ROOT/view/includeNotice.jsp?bookname="+bookname).forward(request, response);
         } catch (ServletException e)
         {
             e.printStackTrace();

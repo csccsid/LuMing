@@ -42,6 +42,6 @@
            border-radius:5px; font-size: 25px"  value="search">
 </form>
 </div>
-<%@include file="/ROOT/footer.jsp" %>
+<%@include file="/ROOT/view/footer.jsp" %>
 </body>
 </html>

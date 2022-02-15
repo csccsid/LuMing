@@ -35,7 +35,7 @@
     }
 </style>
 
-<%@include file="/ROOT/head.jsp" %>
+<%@include file="/ROOT/view/head.jsp" %>
 
 <body>
 <div class="back">
@@ -60,5 +60,5 @@
 </div>
 </body>
 
-<%@include file="/ROOT/footer.jsp" %>
+<%@include file="/ROOT/view/footer.jsp" %>
 </html>
