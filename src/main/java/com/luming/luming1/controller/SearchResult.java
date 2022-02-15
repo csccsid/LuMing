@@ -1,4 +1,4 @@
-package com.luming.luming1;
+package com.luming.luming1.controller;
 
 import com.luming.luming1.DAO.OperationDAO;
 import com.luming.luming1.pool.SqlConpool;

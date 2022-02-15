@@ -1,4 +1,4 @@
-package com.luming.luming1;
+package com.luming.luming1.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

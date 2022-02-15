@@ -265,12 +265,12 @@ public class OperationDAO implements DAO
 
     //epnumber为章节数，能提前开辟ArrayList空间，节约时间
     @Override
-    public Book getbyId(Book book, SqlConpool scp, int epnumber)
+    public Book getbyId(Book book, SqlConpool scp)
     {
         Connection conn = null;
         Statement state = null;
         //储存数据库查询的书籍章节内容
-        ArrayList<Episode> content  = new ArrayList<>(epnumber);
+        ArrayList<Episode> content  = new ArrayList<>(book.getEpisodeNumber());
         try
         {
             //确定书籍名字
@@ -293,10 +293,10 @@ public class OperationDAO implements DAO
 
             while(resultSet2.next())
             {
-                Episode episodetemp = new Episode();
-                episodetemp.setepisodetitle(resultSet2.getString(1));
-                episodetemp.setepisodecontent(resultSet2.getString(2));
-                content.add(episodetemp);
+                Episode episodeTemp = new Episode();
+                episodeTemp.setepisodetitle(resultSet2.getString(1));
+                episodeTemp.setepisodecontent(resultSet2.getString(2));
+                content.add(episodeTemp);
             }
             book.setbookepisode(content);
             this.book=book;

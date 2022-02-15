@@ -27,7 +27,7 @@ public interface DAO
     public ArrayList<Book> getBookList(String bookname, SqlConpool scp);
 
     //精准查询书籍内容
-    public Book getbyId(Book book, SqlConpool scp, int epnumber);
+    public Book getbyId(Book book, SqlConpool scp);
 
     //分页查询所有书籍
     public ArrayList<Book> getAll(SqlConpool scp);

@@ -86,7 +86,7 @@ public class Book implements Serializable//为了能序列化，一定要实现S
         return author;
     }
 
-    public int getEpisodenumber()
+    public int getEpisodeNumber()
     {
         return EpisodeNumber;
     }
