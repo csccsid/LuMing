@@ -282,11 +282,10 @@ public class OperationDAO implements DAO
             if(resultSet.next())
             {
                 book.setbookname(resultSet.getString("bookname"));
-                System.out.println(book.getbookname());
             }
 
             //确定书id合法，所以不用预编译sql
-            String sql2 = "SELECT  `title`, `content` FROM `b1`";
+            String sql2 = "SELECT  `title`, `content` FROM `"+book.getbookid()+"`";
             state = conn.createStatement();
             ResultSet resultSet2 = null;
             resultSet2 = state.executeQuery(sql2);

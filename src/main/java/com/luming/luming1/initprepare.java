@@ -25,7 +25,7 @@ public class initprepare implements ServletContextListener
         sct.setAttribute("dataconpool", sqp);
         System.out.println("初始化全局数据库连接池");
 
-        //创建全局redis连接池
+        //创建全局Redis连接池
         //配置连接池
         GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
         poolConfig.setMaxIdle(20);
@@ -34,7 +34,7 @@ public class initprepare implements ServletContextListener
         //启动连接池
         JedisPool jpool = new JedisPool(poolConfig,"localhost");
         sct.setAttribute("jedispool", jpool);
-        System.out.println("初始化全局redis连接池");
+        System.out.println("初始化全局Redis连接池");
     }
 
     //在整个web应用销毁之前调用

@@ -7,6 +7,7 @@
 <%@ page import="com.luming.luming1.util.Episode" %>
 <%
     ArrayList<Book> bookList = (ArrayList<Book>) request.getAttribute("bookList");
+    String keyWord = (String) request.getAttribute("searchname");
 
 %>
 <html>
@@ -15,6 +16,10 @@
     {
         width:950px; height:100%;
         margin: 90px auto; padding:20px; background: rgba(255, 250, 205, 0.8);
+    }
+    .notice
+    {
+        font-size: 90%; font-family: monospace
     }
     .name a
     {
@@ -39,13 +44,16 @@
 
 <body>
 <div class="back">
+    <p class="notice">Here are <%=bookList.size()%> searching results for the key word <big style="color: red">"<%=keyWord%>"</big></p>
+    <br><br>
+
     <ul style = "list-style:none;padding:0; margin:0;">
         <%Book bookTemp;%>
         <%for(int i=0;i<=bookList.size()-1;i++) {%>
             <%bookTemp = bookList.get(i);%>
     <li>
         <p class="name"><a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookTemp.getbookid()%>">
-            <%=bookTemp.getbookname()%></a></p>
+            <B><%=bookTemp.getbookname()%></B></a></p>
         <p class="author">Author: <%=bookTemp.getauthor()%></p>
         <p class="abstract">Abstract: <%=bookTemp.getBookAbstract()%></p>
     </li>

@@ -9,6 +9,7 @@
     ArrayList<Episode> content = book.getbookepisode();
 %>
 
+<%@include file="/ROOT/view/head.jsp" %>
 
 <html>
 <style>
@@ -29,14 +30,12 @@
     {
 
     }
-    .content a
+    .substance a
     {
         text-decoration: none; font-size: 100%; font-family: SimSun
     }
     a:hover {color: blue;}
 </style>
-
-<%@include file="/ROOT/view/head.jsp" %>
 
 <body>
 <div class="back">
@@ -53,9 +52,8 @@
           {
               for(int i=0;i<=content.size()-1;i++) {%>
     <dl>
-        <dd><p class="content">
-                <a href="http://localhost:8080/LuMing/bookcontent?bookid=
-                <%=book.getbookid()%>&episode=<%=i+1%>">
+        <dd><p class="substance">
+                <a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=book.getbookid()%>&episode=<%=i+1%>">
                 <%=content.get(i).getepisodetitle()%>
                 </a>
             </p>

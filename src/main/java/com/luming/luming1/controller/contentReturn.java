@@ -26,6 +26,7 @@ public class contentReturn extends HttpServlet
         StringBuilder bookid = null;
         String episode = null;
         bookid = new StringBuilder(request.getParameter("bookid"));
+        //作为副本，用来还原bookid
         String id = request.getParameter("bookid");
         episode = request.getParameter("episode");
 
@@ -51,6 +52,7 @@ public class contentReturn extends HttpServlet
         {
             //请求书本页面
 
+            book.setId(id);
             //在Redis中获取书本具体信息
             book.setbookname(jedis.get(String.valueOf(bookid.append("-name"))));
             bookid = new StringBuilder(id);
@@ -75,9 +77,21 @@ public class contentReturn extends HttpServlet
 
             //转向
             request.setAttribute("book", book);
-            request.getRequestDispatcher("ROOT/view/returnBook.jsp?bookid="+bookid).forward(request, response);
+            request.getRequestDispatcher("ROOT/view/returnBook.jsp").forward(request, response);
         } else
         {
+            //获取Redis缓存中存的章节和内容，并传递个下个页面
+            String title = null;
+            String cont = null;
+            title = jedis.get(String.valueOf(bookid.append("episodetitle").append(episode)));
+            bookid = new StringBuilder(id);
+            cont = jedis.get(String.valueOf(bookid.append("episodecontent").append(episode)));
+            bookid = new StringBuilder(id);
+            //设置转向请求的参数
+            request.setAttribute("title", title);
+            request.setAttribute("content", cont);
+
+            //转向
             request.getRequestDispatcher("ROOT/view/returnEpisode.jsp?bookid="+bookid+"&episode="+episode)
                     .forward(request, response);
         }

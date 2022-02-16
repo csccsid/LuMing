@@ -1,57 +1,56 @@
-<%@ page import="redis.clients.jedis.JedisPool" %>
-<%@ page import="redis.clients.jedis.Jedis" %>
-<%@ page import="com.luming.luming1.util.Book" %>
-<%@ page import="static com.luming.luming1.util.SerializeUtil.serialize" %>
-<%@ page import="com.luming.luming1.pool.SqlConpool" %>
-<%@ page import="com.luming.luming1.DAOModel.OperationDAO" %>
-<%@ page import="static com.luming.luming1.util.SerializeUtil.unserialize" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+         pageEncoding="UTF-8" import="java.util.*" %>
 
 <%--返回展示精确查找到的章节情况--%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%
-    String bookid = request.getParameter("bookid");
-    int episode = Integer.parseInt(request.getParameter("episode"));
-    JedisPool jpool;
-    jpool = (JedisPool) request.getSession().getServletContext().getAttribute("jedispool");
-    Jedis jedis = jpool.getResource();
-    Book book = new Book();
-
-    //获取book对象，如果在redis中有就直接提取。若没有就存入redis中。
-    if(!jedis.exists(serialize(bookid)))
-    {
-        //获取全局数据库连接池
-        SqlConpool scp;
-        scp = (SqlConpool) request.getSession().getServletContext().getAttribute("dataconpool");
-
-        OperationDAO operation = new OperationDAO();
-        book.setId(bookid);
-        //获取该书章节数
-        int epnumber = operation.getTable(book, scp);
-        System.out.println("number: "+epnumber);
-        if(epnumber >= 0)
-        {
-            book.setBookEpisodeNumber(epnumber);
-            book = operation.getbyId(book, scp);
-
-            //在redis中存入该书
-            jedis.set(serialize(bookid),serialize(book));
-            //生存时间设定为30分钟
-            jedis.expire(bookid, 3000);
-        }
-
-    } else
-    {
-        book = (Book) unserialize(jedis.get(serialize(bookid)));
-    }
+    //获取各类参数与数据
+    String bookId = request.getParameter("bookid");
+    int episodeIndex = Integer.parseInt(request.getParameter("episode"));
+    String title = (String) request.getAttribute("title");
+    String cont = (String) request.getAttribute("content");
 %>
+
+<%@include file="/ROOT/view/head.jsp" %>
 
 
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
+<style>
+    .back
+    {
+        width:950px; height:100%;
+        margin: 90px auto; padding:20px; background: rgba(255, 250, 205, 0.8);
+    }
+    .name
+    {
+        font-size: 150%; text-align:center; font-family: "Times New Roman", Times, serif;
+    }
+    .substance
+    {
+        font-size: 100%; font-family: SimSun
+    }
+    .content a
+    {
+
+    }
+    a:hover {color: blue;}
+</style>
+
+<body>
+<div class="back">
+    <div class="name">
+        <%=title%>
+    </div>
+
+    <div class="substance">
+        <%=cont%>
+    </div>
+
+    <div>
+
+    </div>
+</div>
 </body>
 <%@include file="/ROOT/view/footer.jsp" %>
 </html>

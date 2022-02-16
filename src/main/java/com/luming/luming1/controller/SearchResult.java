@@ -38,6 +38,7 @@ public class SearchResult extends HttpServlet
             try
             {
                 request.setAttribute("bookList", bookLiet);
+                request.setAttribute("searchname", bookname);
                 request.getRequestDispatcher("ROOT/view/returnBookList.jsp").forward(request, response);
             } catch (ServletException e)
             {
