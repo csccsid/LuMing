@@ -31,14 +31,21 @@ public class redisUpdate
             content = book.getbookepisode();
 
             //在redis中存入该书
-            //整个对象存入jedis序列化和反序列化太耗资源类，所以数据分别存入。
-            //在redis中存入章节数
+            //整个对象存入jedis序列化和反序列化太耗资源类，所以数据分别存入,时间都为30分钟。
+            //在redis中存入书的各个内容
             jedis.set(String.valueOf(bookid.append("-number")), String.valueOf(epnumber));
             bookid = new StringBuilder(id);
-            //在redis中存入书的各个内容
+
             jedis.set(String.valueOf(bookid.append("-name")), book.getbookname(),
                     "nx", "ex", 3000);
             bookid = new StringBuilder(id);
+
+            jedis.set(String.valueOf(bookid.append("-author")),book.getauthor() ,
+                    "nx", "ex", 3000);
+            bookid = new StringBuilder(id);
+            System.out.println("author: "+book.getauthor());
+
+            //在redis中存入章节数
             for(int i = 1; i <= book.getbookepisode().size(); i++)
             {
                 jedis.set(String.valueOf(bookid.append("episodetitle").append(i)),

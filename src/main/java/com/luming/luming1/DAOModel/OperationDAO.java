@@ -275,13 +275,15 @@ public class OperationDAO implements DAO
         {
             //确定书籍名字
             conn = scp.getconnection();
-            String sql = "SELECT bookname FROM booklist WHERE bookid = '" + book.getbookid() + "'";
+            String sql = "SELECT `bookname`, `author` FROM `booklist` WHERE bookid = '"
+                    + book.getbookid() + "'";
             state = conn.createStatement();
             ResultSet resultSet = null;
             resultSet = state.executeQuery(sql);
             if(resultSet.next())
             {
                 book.setbookname(resultSet.getString("bookname"));
+                book.setauthor(resultSet.getString("author"));
             }
 
             //确定书id合法，所以不用预编译sql

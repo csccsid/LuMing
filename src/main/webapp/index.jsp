@@ -9,7 +9,7 @@
     {
         width: 100%;
         height: 100%;
-        background: url("ROOT/background2.jpeg") no-repeat;
+        background: url("ROOT/background.jpeg") no-repeat;
         background-position: center center;
         background-attachment: fixed;
         z-index:-10;
@@ -42,6 +42,6 @@
            border-radius:5px; font-size: 25px"  value="search">
 </form>
 </div>
-<%@include file="/ROOT/view/footer.jsp" %>
+<%@include file="/ROOT/view/footer2.jsp" %>
 </body>
 </html>

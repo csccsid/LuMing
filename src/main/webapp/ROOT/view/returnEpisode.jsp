@@ -19,8 +19,8 @@
 <style>
     .back
     {
-        width:950px; height:100%;
-        margin: 90px auto; padding:20px; background: rgba(255, 250, 205, 0.8);
+        width:950px; text-align:center;
+        margin: 0px auto; padding:20px; background: rgba(255, 250, 205, 0.8);
     }
     .name
     {
@@ -30,9 +30,19 @@
     {
         font-size: 100%; font-family: SimSun
     }
-    .content a
+    .l a
     {
-
+        font-size: 120%; float: left; font-family: Courier New; color: black;
+    }
+    a:hover {color: blue;}
+    .mi a
+    {
+        font-size: 120%; margin: 0 auto; font-family: Courier New; color: black;
+    }
+    a:hover {color: blue;}
+    .r a
+    {
+        font-size: 120%; float: right; font-family: Courier New; color: black;
     }
     a:hover {color: blue;}
 </style>
@@ -40,16 +50,26 @@
 <body>
 <div class="back">
     <div class="name">
-        <%=title%>
+        <b><%=title%></b>
     </div>
+    <br><br>
 
     <div class="substance">
         <%=cont%>
     </div>
 
-    <div>
+    <br><br>
 
+    <div class="mi">
+        <a href="http://localhost:8080/LuMing/bookcontent?bookid=">Content</a>
     </div>
+    <div class="l">
+        <a href="http://localhost:8080/LuMing/bookcontent?bookid=">Previous Chapter</a>
+    </div>
+    <div class="r">
+        <a href="http://localhost:8080/LuMing/bookcontent?bookid=">Next Chapter</a>
+    </div>
+<br><br>
 </div>
 </body>
 <%@include file="/ROOT/view/footer.jsp" %>

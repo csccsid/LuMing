@@ -9,7 +9,7 @@ public interface DAO
 {
     //以下方法都用Book传递信息（如bookname），方便以后拓展功能
 
-    //增加
+    //向待收录列表中增加
     public void add(Book book, SqlConpool scp);
 
     //查询list中有没有这本书

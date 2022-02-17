@@ -10,12 +10,15 @@
     String keyWord = (String) request.getAttribute("searchname");
 
 %>
+
+<%@include file="/ROOT/view/head.jsp" %>
+
 <html>
 <style>
     .back
     {
-        width:950px; height:100%;
-        margin: 90px auto; padding:20px; background: rgba(255, 250, 205, 0.8);
+        width:950px;
+        margin: 0px auto; padding:20px; background: rgba(255, 250, 205, 0.8);
     }
     .notice
     {
@@ -39,8 +42,6 @@
         text-align:center; margin:0 auto; font-size: 90%; font-family: Arial; color: black;
     }
 </style>
-
-<%@include file="/ROOT/view/head.jsp" %>
 
 <body>
 <div class="back">

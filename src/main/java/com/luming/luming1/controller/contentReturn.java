@@ -56,10 +56,12 @@ public class contentReturn extends HttpServlet
             //在Redis中获取书本具体信息
             book.setbookname(jedis.get(String.valueOf(bookid.append("-name"))));
             bookid = new StringBuilder(id);
+            book.setauthor(jedis.get(String.valueOf(bookid.append("-author"))));
+            bookid = new StringBuilder(id);
+
             //用于计数章节数目
             int index=1;
             content = new ArrayList<Episode>();
-
             while(jedis.exists(String.valueOf(bookid.append("episodecontent").append(index))))
             {
                 bookid = new StringBuilder(id);
