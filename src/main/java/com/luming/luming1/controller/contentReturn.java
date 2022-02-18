@@ -58,6 +58,8 @@ public class contentReturn extends HttpServlet
             bookid = new StringBuilder(id);
             book.setauthor(jedis.get(String.valueOf(bookid.append("-author"))));
             bookid = new StringBuilder(id);
+            book.setBookEpisodeNumber(Integer.parseInt(jedis.get(String.valueOf(bookid.append("-number")))));
+            bookid = new StringBuilder(id);
 
             //用于计数章节数目
             int index=1;
@@ -85,11 +87,16 @@ public class contentReturn extends HttpServlet
             //获取Redis缓存中存的章节和内容，并传递个下个页面
             String title = null;
             String cont = null;
+            String episodeNumber = null;
             title = jedis.get(String.valueOf(bookid.append("episodetitle").append(episode)));
             bookid = new StringBuilder(id);
             cont = jedis.get(String.valueOf(bookid.append("episodecontent").append(episode)));
             bookid = new StringBuilder(id);
-            //设置转向请求的参数
+            episodeNumber = jedis.get(String.valueOf(bookid.append("-number")));
+            bookid = new StringBuilder(id);
+
+            //设置请求的参数
+            request.setAttribute("number", episodeNumber);
             request.setAttribute("title", title);
             request.setAttribute("content", cont);
 

@@ -7,6 +7,7 @@
     //获取各类参数与数据
     String bookId = request.getParameter("bookid");
     int episodeIndex = Integer.parseInt(request.getParameter("episode"));
+    int episodeNumber = Integer.parseInt((String) request.getAttribute("number"));
     String title = (String) request.getAttribute("title");
     String cont = (String) request.getAttribute("content");
 %>
@@ -60,14 +61,26 @@
 
     <br><br>
 
-    <div class="mi">
-        <a href="http://localhost:8080/LuMing/bookcontent?bookid=">Content</a>
-    </div>
     <div class="l">
-        <a href="http://localhost:8080/LuMing/bookcontent?bookid=">Previous Chapter</a>
+        <%if(episodeIndex == 1)
+        {%>
+        <a>No More</a>
+        <%}else
+        {%>
+        <a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookId%>&episode=<%=episodeIndex-1%>">Previous Chapter</a>
+        <%}%>
+    </div>
+    <div class="min">
+        <a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookId%>">Content</a>
     </div>
     <div class="r">
-        <a href="http://localhost:8080/LuMing/bookcontent?bookid=">Next Chapter</a>
+        <%if(episodeIndex == episodeNumber)
+        {%>
+        <a>No More</a>
+        <%}else
+        {%>
+        <a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookId%>&episode=<%=episodeIndex+1%>">Next Chapter</a>
+        <%}%>
     </div>
 <br><br>
 </div>

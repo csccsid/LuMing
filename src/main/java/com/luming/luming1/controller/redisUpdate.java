@@ -21,19 +21,19 @@ public class redisUpdate
         book.setId(id);
 
         //获取该书章节数
-        int epnumber = operation.getTable(book, scp);
-        System.out.println("number: "+epnumber);
-        if(epnumber >= 0)
+        int epNumber = operation.getTable(book, scp);
+        System.out.println("number: "+epNumber);
+        if(epNumber >= 0)
         {
             //数据库中查询书本具体内容
-            book.setBookEpisodeNumber(epnumber);
+            book.setBookEpisodeNumber(epNumber);
             book = operation.getbyId(book, scp);
             content = book.getbookepisode();
 
             //在redis中存入该书
             //整个对象存入jedis序列化和反序列化太耗资源类，所以数据分别存入,时间都为30分钟。
             //在redis中存入书的各个内容
-            jedis.set(String.valueOf(bookid.append("-number")), String.valueOf(epnumber));
+            jedis.set(String.valueOf(bookid.append("-number")), String.valueOf(epNumber));
             bookid = new StringBuilder(id);
 
             jedis.set(String.valueOf(bookid.append("-name")), book.getbookname(),
