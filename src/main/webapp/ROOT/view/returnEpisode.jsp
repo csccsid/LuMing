@@ -60,6 +60,10 @@
     </div>
 
     <br><br>
+    <div class="min">
+        <a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookId%>">Content</a>
+    </div>
+    <br>
 
     <div class="l">
         <%if(episodeIndex == 1)
@@ -70,9 +74,7 @@
         <a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookId%>&episode=<%=episodeIndex-1%>">Previous Chapter</a>
         <%}%>
     </div>
-    <div class="min">
-        <a href="http://localhost:8080/LuMing/bookcontent?bookid=<%=bookId%>">Content</a>
-    </div>
+
     <div class="r">
         <%if(episodeIndex == episodeNumber)
         {%>
