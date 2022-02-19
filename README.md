@@ -1,2 +1,2 @@
 # LuMing
-##项目背景
+<p align="center">## 项目背景</p>
