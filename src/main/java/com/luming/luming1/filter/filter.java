@@ -7,7 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebFilter(filterName = "Filter1", value = "/123")
+//目前没作用，但是方便以后拓展功能
+@WebFilter(filterName = "Filter1", value = "/*")
 public class filter implements Filter
 {
     @Override
